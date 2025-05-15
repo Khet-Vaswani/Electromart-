@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectroMart - Products</title>
+  <link rel="stylesheet" href="stylesp.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">ElectroMart</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            
+          </ul>
+        </nav>
+      </header>
+      
+  <main >
+
+    <section class="product-page">
+      <h1>Our Products</h1>
+      <!-- Subcategories Navigation -->
+      <div class="subcategories">
+        <div class="category">
+          <h2>Smartphones & Accessories</h2>
+          <div class="sub-category-list">
+            <a href="#" data-filter="smartphones">Smartphones</a>
+            <a href="#" data-filter="chargers">Chargers & Cables</a>
+            <a href="#" data-filter="phonecases">Phone Cases</a>
+          </div>
+        </div>
+        <div class="category">
+          <h2>Laptops & Computers</h2>
+          <div class="sub-category-list">
+            <a href="#" data-filter="laptops">Laptops</a>
+            <a href="#" data-filter="keyboards">Keyboards & Mice</a>
+            <a href="#" data-filter="storage">External Hard Drives</a>
+          </div>
+        </div>
+        <div class="category">
+          <h2>Smartwatches & Wearables</h2>
+          <div class="sub-category-list">
+            <a href="#" data-filter="fitnesstrackers">Fitness Trackers</a>
+            <a href="#" data-filter="smartwatches">Smartwatches</a>
+            <a href="#" data-filter="bands">Bands & Straps</a>
+          </div>
+        </div>
+        <div class="category">
+          <h2>Headphones & Speakers</h2>
+          <div class="sub-category-list">
+            <a href="#" data-filter="wireless">Wireless Headphones</a>
+            <a href="#" data-filter="bluetooth">Bluetooth Speakers</a>
+            <a href="#" data-filter="noisecancel">Noise-Canceling Headphones</a>
+          </div>
+        </div>
+        <div class="category">
+          <h2>Cameras & Accessories</h2>
+          <div class="sub-category-list">
+            <a href="#" data-filter="dslr">DSLR Cameras</a>
+            <a href="#" data-filter="action">Action Cameras</a>
+            <a href="#" data-filter="lenses">Camera Lenses</a>
+          </div>
+        </div>
+        <!-- Button to reset filter -->
+        <div class="category">
+          <div class="sub-category-list">
+            <a href="#" data-filter="all">Show All</a>
+          </div>
+        </div>
+      </div>
+      <section class="live-search">
+        <input type="text" id="searchInput" placeholder="Search products..." />
+        <select id="sortOptions">
+          <option value="">Sort By</option>
+          <option value="priceAsc">Price: Low to High</option>
+          <option value="priceDesc">Price: High to Low</option>
+          <option value="nameAsc">Name: A-Z</option>
+          <option value="nameDesc">Name: Z-A</option>
+        </select>
+      </section>
+      <!-- Product Grid -->
+      <section class="products">
+        <div class="product-list" id="productContainer">
+          <!-- 32 Products with proper data-category attributes -->
+          <div class="product-item" data-category="smartphones">
+            <img src="img/prodduct1.jpg" alt="Smartphone Model 1" />
+            <h3>Smartphone Model 1</h3>
+            <p>A high performance smartphone with cutting-edge features.</p>
+            <p class="price">$499</p>
+            <p class="reviews">★★★★☆ (10 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="chargers">
+            <img src="img/product2.jpg" alt="Fast Charger 1" />
+            <h3>Fast Charger 1</h3>
+            <p>Efficient charger for fast charging your devices.</p>
+            <p class="price">$29</p>
+            <p class="reviews">★★★☆☆ (5 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="phonecases">
+            <img src="img/product3.jpg" alt="Stylish Phone Case" />
+            <h3>Stylish Phone Case</h3>
+            <p>Protect your smartphone in style with this durable case.</p>
+            <p class="price">$19</p>
+            <p class="reviews">★★★★☆ (8 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="laptops">
+            <img src="img/product4.jpg" alt="UltraBook Laptop" />
+            <h3>UltraBook Laptop</h3>
+            <p>Lightweight and powerful for your daily tasks.</p>
+            <p class="price">$999</p>
+            <p class="reviews">★★★★★ (15 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="keyboards">
+            <img src="img/product5.jpg" alt="Mechanical Keyboard" />
+            <h3>Mechanical Keyboard</h3>
+            <p>Responsive keyboard designed for gaming and typing.</p>
+            <p class="price">$89</p>
+            <p class="reviews">★★★★☆ (12 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="storage">
+            <img src="img/product6.jpg" alt="External Hard Drive" />
+            <h3>External Hard Drive</h3>
+            <p>Portable 1TB storage solution for your files.</p>
+            <p class="price">$59</p>
+            <p class="reviews">★★★☆☆ (6 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="fitnesstrackers">
+            <img src="img/product7.jpg" alt="Fitness Tracker" />
+            <h3>Fitness Tracker</h3>
+            <p>Monitor your health and activity with ease.</p>
+            <p class="price">$49</p>
+            <p class="reviews">★★★★☆ (9 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="smartwatches">
+            <img src="img/product8.jpg" alt="Smartwatch Pro" />
+            <h3>Smartwatch Pro</h3>
+            <p>Advanced smartwatch with fitness tracking and notifications.</p>
+            <p class="price">$199</p>
+            <p class="reviews">★★★★★ (20 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="bands">
+            <img src="img/product9.jpg" alt="Sport Band" />
+            <h3>Sport Band</h3>
+            <p>Comfortable and durable band for your smartwatch.</p>
+            <p class="price">$15</p>
+            <p class="reviews">★★★☆☆ (3 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="wireless">
+            <img src="img/product10.jpg" alt="Wireless Headphones" />
+            <h3>Wireless Headphones</h3>
+            <p>Enjoy premium sound without the wires.</p>
+            <p class="price">$129</p>
+            <p class="reviews">★★★★☆ (14 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="bluetooth">
+            <img src="img/product11.jpg" alt="Bluetooth Speaker" />
+            <h3>Bluetooth Speaker</h3>
+            <p>Portable speaker with excellent sound quality.</p>
+            <p class="price">$79</p>
+            <p class="reviews">★★★★☆ (11 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="noisecancel">
+            <img src="img/product12.jpg" alt="Noise-Canceling Headphones" />
+            <h3>Noise-Canceling Headphones</h3>
+            <p>Immerse yourself in music with effective noise cancellation.</p>
+            <p class="price">$149</p>
+            <p class="reviews">★★★★★ (18 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="dslr">
+            <img src="img/product13.jpg" alt="DSLR Camera" />
+            <h3>DSLR Camera</h3>
+            <p>Capture stunning photos with advanced DSLR technology.</p>
+            <p class="price">$549</p>
+            <p class="reviews">★★★★☆ (10 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="action">
+            <img src="img/product14.jpg" alt="Action Camera" />
+            <h3>Action Camera</h3>
+            <p>Record your adventures in high-definition video.</p>
+            <p class="price">$299</p>
+            <p class="reviews">★★★★☆ (8 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="lenses">
+            <img src="img/product15.jpg" alt="Camera Lens" />
+            <h3>Camera Lens</h3>
+            <p>Enhance your photography with a high-quality lens.</p>
+            <p class="price">$199</p>
+            <p class="reviews">★★★☆☆ (5 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="smartphones">
+            <img src="img/product16.jpg" alt="Smartphone Model 2" />
+            <h3>Smartphone Model 2</h3>
+            <p>Latest technology in a sleek design.</p>
+            <p class="price">$599</p>
+            <p class="reviews">★★★★☆ (12 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="chargers">
+            <img src="img/product17.jpg" alt="Fast Charger 2" />
+            <h3>Fast Charger 2</h3>
+            <p>Efficient charger for modern smartphones.</p>
+            <p class="price">$35</p>
+            <p class="reviews">★★★☆☆ (4 reviews)</p>
+            <button>Add to Cart</button>
+
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="phonecases">
+            <img src="img/product18.jpg" alt="Durable Phone Case" />
+            <h3>Durable Phone Case</h3>
+            <p>Keep your device safe with this rugged case.</p>
+            <p class="price">$25</p>
+            <p class="reviews">★★★★☆ (7 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="laptops">
+            <img src="img/product19.jpg" alt="Gaming Laptop" />
+            <h3>Gaming Laptop</h3>
+            <p>High-performance laptop built for gaming.</p>
+            <p class="price">$1299</p>
+            <p class="reviews">★★★★★ (22 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="keyboards">
+            <img src="img/product20.avif" alt="RGB Mechanical Keyboard" />
+            <h3>RGB Mechanical Keyboard</h3>
+            <p>Mechanical keys with customizable RGB lighting.</p>
+            <p class="price">$99</p>
+            <p class="reviews">★★★★☆ (15 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="storage">
+            <img src="img/product21.jpg" alt="Portable SSD" />
+            <h3>Portable SSD</h3>
+            <p>Fast, reliable storage on the go.</p>
+            <p class="price">$119</p>
+            <p class="reviews">★★★★☆ (9 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="fitnesstrackers">
+            <img src="img/prodduct22.jpg" alt="Fitness Tracker Pro" />
+            <h3>Fitness Tracker Pro</h3>
+            <p>Advanced tracking for your fitness journey.</p>
+            <p class="price">$69</p>
+            <p class="reviews">★★★★☆ (11 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="smartwatches">
+            <img src="img/product23.jpg" alt="Smartwatch X" />
+            <h3>Smartwatch X</h3>
+            <p>Sleek design with powerful features.</p>
+            <p class="price">$249</p>
+            <p class="reviews">★★★★★ (17 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="bands">
+            <img src="img/product25.jpg" alt="Leather Watch Band" />
+            <h3>Leather Watch Band</h3>
+            <p>Premium leather band for a classic look.</p>
+            <p class="price">$35</p>
+            <p class="reviews">★★★★☆ (6 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="wireless">
+            <img src="img/product24.jpg" alt="Over-Ear Wireless Headphones" />
+            <h3>Over-Ear Wireless Headphones</h3>
+            <p>Experience high-fidelity sound without cords.</p>
+            <p class="price">$139</p>
+            <p class="reviews">★★★★☆ (13 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="bluetooth">
+            <img src="img/product26.jpg" alt="Portable Bluetooth Speaker" />
+            <h3>Portable Bluetooth Speaker</h3>
+            <p>Compact speaker with powerful sound output.</p>
+            <p class="price">$69</p>
+            <p class="reviews">★★★★☆ (8 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="noisecancel">
+            <img src="img/product27.jpg" alt="Premium Noise-Canceling Headphones" />
+            <h3>Premium Noise-Canceling Headphones</h3>
+            <p>Immerse yourself in your music with active noise cancellation.</p>
+            <p class="price">$179</p>
+            <p class="reviews">★★★★★ (19 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="dslr">
+            <img src="img/Product28.jpg" alt="Advanced DSLR Camera" />
+            <h3>Advanced DSLR Camera</h3>
+            <p>Capture professional-grade images with ease.</p>
+            <p class="price">$649</p>
+            <p class="reviews">★★★★☆ (14 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="action">
+            <img src="img/product29.jpg" alt="Compact Action Camera" />
+            <h3>Compact Action Camera</h3>
+            <p>Small in size, big on performance.</p>
+            <p class="price">$249</p>
+            <p class="reviews">★★★★☆ (10 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="lenses">
+            <img src="img/product30.jpg" alt="Wide-Angle Camera Lens" />
+            <h3>Wide-Angle Camera Lens</h3>
+            <p>Expand your creative horizons with this lens.</p>
+            <p class="price">$229</p>
+            <p class="reviews">★★★★☆ (7 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="smartphones">
+            <img src="img/product31.jpg" alt="Smartphone Model 3" />
+            <h3>Smartphone Model 3</h3>
+            <p>Innovation meets design in this sleek smartphone.</p>
+            <p class="price">$549</p>
+            <p class="reviews">★★★★☆ (10 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+          <div class="product-item" data-category="chargers">
+            <img src="img/product32.jpg" alt="Ultra Fast Charger" />
+            <h3>Ultra Fast Charger</h3>
+            <p>Charge your devices in record time.</p>
+            <p class="price">$39</p>
+            <p class="reviews">★★★☆☆ (5 reviews)</p>
+            <button>Add to Cart</button>
+            <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modalImage" src="" alt="Product Image">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <p class="price" id="modalPrice"></p>
+      <p class="reviews" id="modalReviews"></p>
+
+
+      <div class="social-share">
+        <h3>Share This Product:</h3>
+        <a href="#" class="share-btn" id="shareFacebook" target="_blank">Facebook</a>
+        <a href="#" class="share-btn" id="shareTwitter" target="_blank">Twitter</a>
+        <a href="#" class="share-btn" id="shareLinkedIn" target="_blank">LinkedIn</a>
+      </div>
+      
+      <!-- Comment Section -->
+      <div class="comments">
+        <h3>Comments</h3>
+        <textarea id="commentText" placeholder="Write your comment here..."></textarea>
+        <button id="postComment">Post Comment</button>
+        <div id="commentsContainer">
+          <!-- Existing comments will appear here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot Widget -->
+<div id="chatbot">
+    <div id="chatbotHeader">
+      <span>Chat with us!</span>
+      <button id="chatbotToggle">–</button>
+    </div>
+    <div id="chatbotMessages"></div>
+    <div id="chatbotInputArea">
+      <input type="text" id="chatbotInput" placeholder="Type your message..." />
+      <button id="chatbotSend">Send</button>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>
+          ElectroMart is your one-stop destination for the latest electronic gadgets. We pride ourselves on quality, innovation, and customer satisfaction. Our mission is to provide a seamless shopping experience with a wide range of products and top-notch customer service.
+        </p>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Email: khetvaswani@gmail.com</li>
+          <li>Phone: 0331-8096987</li>
+           <li>Address: MEHRAN UNIVERSITY</li>
+        </ul>
+      </div>
+      <div class="footer-section credits">
+        <h3>Developers</h3>
+        <ul>
+          <li>Khet Maheshwari</li>
+          <li>Vias Kohli </li>
+          <li>Bilal qazi</li>
+        </ul>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ElectroMart. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        updateCartCount();
+      
+        // Attach event listeners for "Add to Cart" and "Buy Now" buttons
+        const addCartButtons = document.querySelectorAll(".add-cart-btn");
+        addCartButtons.forEach(button => {
+          button.addEventListener("click", addToCart);
+        });
+      
+        const buyNowButtons = document.querySelectorAll(".buy-now-btn");
+        buyNowButtons.forEach(button => {
+          button.addEventListener("click", buyNow);
+        });
+      
+        // Attach click listener to product items for opening detail modal
+        const productItems = document.querySelectorAll(".product-item");
+        productItems.forEach(item => {
+          // Avoid conflict with button clicks by checking target element
+          item.addEventListener("click", event => {
+            if (
+              !event.target.classList.contains("add-cart-btn") &&
+              !event.target.classList.contains("buy-now-btn")
+            ) {
+              openProductModal(item);
+            }
+          });
+        });
+      
+        // Modal close event
+        const modalClose = document.querySelector(".modal .close");
+        modalClose.addEventListener("click", closeProductModal);
+      
+        // Close modal when clicking outside modal content
+        window.addEventListener("click", event => {
+          const modal = document.getElementById("productModal");
+          if (event.target == modal) {
+            closeProductModal();
+          }
+        });
+      
+        // Comment posting event in modal
+        const postCommentBtn = document.getElementById("postComment");
+        postCommentBtn.addEventListener("click", postComment);
+      });
+      
+      // Helper: Get cart from localStorage or return empty array
+      function getCart() {
+        const cart = localStorage.getItem("cart");
+        return cart ? JSON.parse(cart) : [];
+      }
+      
+      // Helper: Save cart to localStorage
+      function saveCart(cart) {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+      
+      // Update cart count
+      function updateCartCount() {
+        const cart = getCart();
+        const countElem = document.getElementById("cart-count");
+        if (countElem) {
+          countElem.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+      }
+      
+      // Add product to cart
+      function addToCart(event) {
+        event.stopPropagation(); // Prevent modal opening
+        const productElem = event.target.closest(".product-item");
+        if (!productElem) return;
+      
+        const image = productElem.querySelector("img").src;
+        const title = productElem.querySelector("h3").textContent;
+        const priceText = productElem.querySelector(".price").textContent;
+        const price = parseFloat(priceText.replace("$", ""));
+        
+        const product = {
+          id: title, // For demo purposes; use unique ID in production
+          image,
+          title,
+          price,
+          quantity: 1
+        };
+      
+        let cart = getCart();
+        const existingIndex = cart.findIndex(item => item.id === product.id);
+        if (existingIndex > -1) {
+          cart[existingIndex].quantity += 1;
+        } else {
+          cart.push(product);
+        }
+        
+        saveCart(cart);
+        updateCartCount();
+        alert(`${title} added to cart.`);
+      }
+      
+      // Buy Now: Add to cart and redirect to checkout
+      function buyNow(event) {
+        event.stopPropagation(); // Prevent modal opening
+        addToCart(event);
+        setTimeout(() => {
+          window.location.href = "checkout.html";
+        }, 300);
+      }
+      
+      // Open product detail modal
+      function openProductModal(productElem) {
+        const modal = document.getElementById("productModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalPrice = document.getElementById("modalPrice");
+        const modalReviews = document.getElementById("modalReviews");
+      
+        modalImage.src = productElem.querySelector("img").src;
+        modalTitle.textContent = productElem.querySelector("h3").textContent;
+        // For demo, use the short description plus additional detail
+        modalDescription.textContent = productElem.querySelector(".short-desc")
+          ? productElem.querySelector(".short-desc").textContent + " Detailed description goes here."
+          : "Detailed description goes here.";
+        modalPrice.textContent = productElem.querySelector(".price").textContent;
+        modalReviews.textContent = productElem.querySelector(".reviews").textContent;
+      
+        // Clear previous comments
+        document.getElementById("commentsContainer").innerHTML = "";
+      
+        modal.style.display = "block";
+      }
+      
+      // Close modal
+      function closeProductModal() {
+        const modal = document.getElementById("productModal");
+        modal.style.display = "none";
+      }
+      
+      // Post comment in modal
+      function postComment() {
+        const commentText = document.getElementById("commentText").value;
+        if (!commentText.trim()) return;
+        const commentDiv = document.createElement("div");
+        commentDiv.classList.add("comment");
+        commentDiv.textContent = commentText;
+        document.getElementById("commentsContainer").appendChild(commentDiv);
+        document.getElementById("commentText").value = "";
+      }
+      
+  </script>
+</body>
+</html>

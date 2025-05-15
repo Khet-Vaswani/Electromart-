@@ -1,0 +1,90 @@
+{
+  "info": {
+    "name": "ElectroMart API",
+    "_postman_id": "electromart-collection-id",
+    "description": "Postman collection for ElectroMart backend API testing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"test@example.com\", \"password\": \"123456\"}"
+        },
+        "url": {
+          "raw": "http://localhost/electromart/electromart-backend/api/register.php"
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\": \"test@example.com\", \"password\": \"123456\"}"
+        },
+        "url": {
+          "raw": "http://localhost/electromart/electromart-backend/api/login.php"
+        }
+      }
+    },
+    {
+      "name": "Get All Products",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_JWT_TOKEN"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost/electromart/electromart-backend/api/products.php"
+        }
+      }
+    },
+    {
+      "name": "Place Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_JWT_TOKEN"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"product_ids\": [1, 2], \"total_price\": 149.99}"
+        },
+        "url": {
+          "raw": "http://localhost/electromart/electromart-backend/orders/placeOrder.php"
+        }
+      }
+    }
+  ]
+}

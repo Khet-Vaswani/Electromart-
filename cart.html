@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectroMart - Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">ElectroMart</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            
+          </ul>
+        </nav>
+      </header>
+
+  <main>
+    <section class="cart-page">
+      <h1>Your Shopping Cart</h1>
+      <div class="cart-container">
+        <table class="cart-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Cart Item 1 -->
+            <tr class="cart-item">
+              <td><img src="img/product1.jpg" alt="Smartphone Model 1"></td>
+              <td>Smartphone Model 1</td>
+              <td>$499</td>
+              <td><input type="number" value="1" min="1"></td>
+              <td>$499</td>
+              <td><button class="remove-btn">X</button></td>
+            </tr>
+            <!-- Cart Item 2 -->
+            <tr class="cart-item">
+              <td><img src="img/product4.jpg" alt="UltraBook Laptop"></td>
+              <td>UltraBook Laptop</td>
+              <td>$999</td>
+              <td><input type="number" value="1" min="1"></td>
+              <td>$999</td>
+              <td><button class="remove-btn">X</button></td>
+            </tr>
+            <!-- Cart Item 3 -->
+            <tr class="cart-item">
+              <td><img src="img/product10.jpg" alt="Wireless Headphones"></td>
+              <td>Wireless Headphones</td>
+              <td>$129</td>
+              <td><input type="number" value="2" min="1"></td>
+              <td>$258</td>
+              <td><button class="remove-btn">X</button></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="cart-summary">
+          <h2>Cart Summary</h2>
+          <p>Subtotal: <span>$1756</span></p>
+          <p>Shipping: <span>$50</span></p>
+          <p>Total: <span>$1806</span></p>
+          <a href="checkout.html">
+            <button class="checkout-btn">Proceed to Checkout</button>
+          </a>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+ 
+  
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>
+          ElectroMart is your one-stop destination for the latest electronic gadgets. We pride ourselves on quality, innovation, and customer satisfaction. Our mission is to provide a seamless shopping experience with a wide range of products and top-notch customer service.
+        </p>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Email: khetvaswani@gmail.com</li>
+          <li>Phone: 0331-8096987</li>
+           <li>Address: MEHRAN UNIVERSITY</li>
+        </ul>
+      </div>
+      <div class="footer-section credits">
+        <h3>Developers</h3>
+        <ul>
+          <li>Khet Maheshwari</li>
+          <li>Vias Kohli </li>
+          <li>Bilal qazi</li>
+        </ul>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ElectroMart. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectroMart - Checkout</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">ElectroMart</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            
+          </ul>
+        </nav>
+      </header>
+
+  <main>
+    <section class="checkout-page">
+      <h1>Checkout</h1>
+      <div class="checkout-container">
+        <!-- Customer Details Form -->
+        <div class="customer-details">
+          <h2>Customer Details</h2>
+          <form id="customerForm">
+            <div class="form-group">
+              <label for="customerName">Name:</label>
+              <input type="text" id="customerName" required>
+            </div>
+            <div class="form-group">
+              <label for="customerEmail">Email:</label>
+              <input type="email" id="customerEmail" required>
+            </div>
+            <div class="form-group">
+              <label for="customerPhone">Phone:</label>
+              <input type="text" id="customerPhone" required>
+            </div>
+            <div class="form-group">
+              <label for="customerAddress">Address:</label>
+              <textarea id="customerAddress" required></textarea>
+            </div>
+            
+
+            <div class="form-group">
+              <label>Payment Method:</label>
+              <div>
+                <input type="radio" id="paymentVisa" name="paymentMethod" value="Visa" required>
+                <label for="paymentVisa">Visa</label>
+              </div>
+              <div>
+                <input type="radio" id="paymentMastercard" name="paymentMethod" value="MasterCard" required>
+                <label for="paymentMastercard">MasterCard</label>
+              </div>
+              <div>   
+                <input type="radio" id="paymentAmex" name="paymentMethod" value="American Express" required>
+                <label for="paymentAmex">American Express</label>
+              </div>
+              <div>
+                <input type="radio" id="paymentPaypal" name="paymentMethod" value="easypaisa" required>
+                <label for="paymentPaypal">easypaisa</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <h3>Account Details</h3>
+              <label for="accountNumber">Account Number:</label>
+              <input type="text" id="accountNumber" name="accountNumber" required>
+              <label for="accountName">Account Name:</label>
+              <input type="text" id="accountName" name="accountName" required>
+            </div>
+            <button type="submit" class="confirm-btn">Confirm Order</button>
+        </div>
+        
+        
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          <div id="orderItems">
+            <!-- Order items will be injected here via JS -->
+          </div>
+          <div class="summary-total">
+            <p>Subtotal: <span id="summarySubtotal"></span></p>
+            <p>Shipping: <span id="summaryShipping"></span></p>
+            <p>Total: <span id="summaryTotal"></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h3>Payment Info</h3>
+<div id="card-element"><!-- Stripe Element will be inserted here --></div>
+<div id="card-errors" role="alert"></div>
+<button id="pay-button">Pay Now</button>     write a css code for this part
+<form method="POST" action="api/create_checkout.php">
+  <button type="submit" class="safepay-btn">Pay with Easypaisa / JazzCash</button>
+</form>
+
+  </main>
+  <section class="payment-methods">
+    <h2>We Accept</h2>
+    <div class="payment-icons">
+      <img src="img/visa.png" alt="Visa">
+      <img src="img/mastercard.png" alt="MasterCard">
+      <img src="img/amex.png" alt="American Express">
+      <img src="img/paypal.png" alt="PayPal">
+    </div>
+  </section>
+  
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>
+          ElectroMart is your one-stop destination for the latest electronic gadgets. We pride ourselves on quality, innovation, and customer satisfaction. Our mission is to provide a seamless shopping experience with a wide range of products and top-notch customer service.
+        </p>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Email: khetvaswani@gmail.com</li>
+          <li>Phone: 0331-8096987</li>
+           <li>Address: MEHRAN UNIVERSITY</li>
+        </ul>
+      </div>
+      <div class="footer-section credits">
+        <h3>Developers</h3>
+        <ul>
+          <li>Khet Maheshwari</li>
+          <li>Vias Kohli </li>
+          <li>Bilal qazi</li>
+        </ul>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ElectroMart. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const customerForm = document.getElementById('customerForm');
+    
+      if (customerForm) {
+        customerForm.addEventListener('submit', function(event) {
+          event.preventDefault();
+    
+          const paymentData = {
+            customerName: document.getElementById('customerName').value,
+            customerEmail: document.getElementById('customerEmail').value,
+            customerPhone: document.getElementById('customerPhone').value,
+            customerAddress: document.getElementById('customerAddress').value,
+            paymentMethod: document.querySelector('input[name="paymentMethod"]:checked').value,
+            accountNumber: document.getElementById('accountNumber').value,
+            accountName: document.getElementById('accountName').value,
+            orderItems: [], // TODO: Populate with actual order items from cart
+            totalAmount: 0  // TODO: Calculate total amount from cart
+          };
+    
+          fetch('electromart-backend/api/payment.php', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(paymentData)
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              alert('Payment successful: ' + data.message);
+              // Optionally redirect or clear form
+            } else {
+              alert('Payment failed: ' + data.message);
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred during payment processing.');
+          });
+        });
+      }
+    });
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+    const stripe = Stripe('your_stripe_publishable_key'); // Replace with your publishable key
+    
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+    
+    document.getElementById('pay-button').addEventListener('click', async () => {
+      const { paymentMethod, error } = await stripe.createPaymentMethod('card', cardElement);
+    
+      if (error) {
+        document.getElementById('card-errors').textContent = error.message;
+        return;
+      }
+    
+      const response = await fetch('api/charge.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          payment_method: paymentMethod.id,
+          amount: 5000 // Example: $50.00 → 5000 cents
+        })
+      });
+    
+      const result = await response.json();
+    
+      if (result.success) {
+        alert('Payment successful!');
+      } else {
+        document.getElementById('card-errors').textContent = result.error;
+      }
+    });
+    </script>
+    
+    <script>
+      document.getElementById("pay-button").addEventListener("click", function () {
+        fetch("api/create_checkout.php", {
+          method: "POST",
+          body: JSON.stringify({
+            amount: 1500,
+            currency: "PKR"
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(res => res.json())
+        .then(data => {
+          window.location.href = data.payment_url; // e.g. Safepay redirect
+        });
+      });
+      
+    </script>
+</body>
+</html>

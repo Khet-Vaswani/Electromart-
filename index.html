@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectroMart - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+<body>
+    <header>
+        <div class="logo">ElectroMart</div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="cart.html">Cart <span id="cart-count">0</span></a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            
+          </ul>
+        </nav>
+      </header>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to ElectroMart</h1>
+      <p>Your one-stop shop for the latest gadgets</p>
+      <button onclick="location.href='products.html'">Shop Now</button>
+    </section>
+
+    <main>
+        <!-- Product Carousel Section -->
+        <section class="carousel">
+          <div class="carousel-container">
+            <div class="carousel-slide">
+              <img src="img/featured1.jpg" alt="Featured Product 1" />
+              <h2>Featured Product 1</h2>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/featured2.jpg" alt="Featured Product 2" />
+              <h2>Featured Product 2</h2>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/featured3.jpg" alt="Featured Product 3" />
+              <h2>Featured Product 3</h2>
+            </div>
+          </div>
+          <button class="carousel-btn prev">&#10094;</button>
+          <button class="carousel-btn next">&#10095;</button>
+        </section>
+        <!-- Live Search Input -->
+        <section class="live-search" >
+          <input type="text" id="searchInput" placeholder="Search products..." />
+        </section>
+    <div id="loginModal" class="modal" >
+        <div class="modal-content">
+          <span class="close" id="closeLogin">&times;</span>
+          <h2>Login</h2>
+          <form id="loginForm" method="post" action="login.php">
+            <div class="form-group">
+              <label for="loginEmail">Email:</label>
+              <input type="email" id="loginEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password:</label>
+              <input type="password" id="loginPassword" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+          </form>
+          <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+        </div>
+            </div>
+
+      <!-- Register Modal -->
+      <div id="registerModal" class="modal" >
+        <div class="modal-content">
+          <span class="close" id="closeRegister">&times;</span>
+          <h2>Register</h2>
+          <form id="registerForm">
+            <div class="form-group">
+              <label for="registerName">Name:</label>
+              <input type="text" id="registerName" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label for="registerEmail">Email:</label>
+              <input type="email" id="registerEmail" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+              <label for="registerPassword">Password:</label>
+              <input type="password" id="registerPassword" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn">Register</button>
+          </form>
+          <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+        </div>
+      </div>
+      <script>
+        // REGISTER FORM SUBMIT
+        document.getElementById("registerForm").addEventListener("submit", async function(e) {
+          e.preventDefault();
+    
+          const username = document.getElementById("regUsername").value;
+          const email    = document.getElementById("regEmail").value;
+          const password = document.getElementById("regPassword").value;
+    
+          const response = await fetch("api/register.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, email, password })
+          });
+    
+          const result = await response.json();
+          if (response.ok) {
+            alert("Registered Successfully!");
+            localStorage.setItem("token", result.token); // Save JWT
+          } else {
+            alert("Register Error: " + result.error);
+          }
+        });
+        document.getElementById("pay-button").addEventListener("click", function () {
+          fetch("api/create_checkout.php", {
+            method: "POST",
+            body: JSON.stringify({
+              amount: 1500,
+              currency: "PKR"
+            }),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+          .then(res => res.json())
+          .then(data => {
+            window.location.href = data.payment_url; // e.g. Safepay redirect
+          });
+        });
+        
+    
+        // LOGIN FORM SUBMIT
+        document.getElementById("loginForm").addEventListener("submit", async function(e) {
+          e.preventDefault();
+    
+          const email    = document.getElementById("loginEmail").value;
+          const password = document.getElementById("loginPassword").value;
+    
+          const response = await fetch("api/login.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+          });
+    
+          const result = await response.json();
+          if (response.ok) {
+            alert("Login Successful!");
+            localStorage.setItem("token", result.token); // Save JWT
+          } else {
+            alert("Login Error: " + result.error);
+          }
+        });
+      </script>
+
+  
+    <!-- Featured Products Section -->
+    <section class="featured-products">
+      <h2>Featured Products</h2>
+      <div class="product-list">
+        <!-- Featured Product 1 -->
+        <div class="product-item">
+          <img src="img/featured1.jpg" alt="Featured Product 1" />
+          <h3>Featured Product 1</h3>
+          <p>Amazing gadget with state-of-the-art features.</p>
+          <p class="price">$299</p>
+          <button>Add to Cart</button>
+          <button class="buy-now-btn">Buy Now</button>
+           <button class="wishlist-btn">Add to Wishlist</button>
+        </div>
+        <!-- Featured Product 2 -->
+        <div class="product-item">
+          <img src="img/featured2.jpg" alt="Featured Product 2" />
+          <h3>Featured Product 2</h3>
+          <p>Innovative design meets functionality.</p>
+          <p class="price">$399</p>
+          <button>Add to Cart</button>
+          <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+        </div>
+        <!-- Featured Product 3 -->
+        <div class="product-item">
+          <img src="img/featured3.jpg" alt="Featured Product 3" />
+          <h3>Featured Product 3</h3>
+          <p>High performance gadget for everyday use.</p>
+          <p class="price">$249</p>
+          <button>Add to Cart</button>
+          <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+        </div>
+        <!-- Featured Product 4 -->
+        <div class="product-item">
+          <img src="img/featured4.jpg" alt="Featured Product 4" />
+          <h3>Featured Product 4</h3>
+          <p>Experience quality and style in one package.</p>
+          <p class="price">$349</p>
+          <button>Add to Cart</button>
+          <button class="buy-now-btn">Buy Now</button>
+            <button class="wishlist-btn">Add to Wishlist</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <h2>Subscribe to our Newsletter</h2>
+      <input type="email" id="newsletter-email" placeholder="Enter your email" />
+      <button onclick="subscribeNewsletter()">Subscribe</button>
+    </section>
+  </main>
+  <!-- Chatbot Widget -->
+<div id="chatbot">
+    <div id="chatbotHeader">
+      <span>Chat with us!</span>
+      <button id="chatbotToggle">–</button>
+    </div>
+    <div id="chatbotMessages"></div>
+    <div id="chatbotInputArea">
+      <input type="text" id="chatbotInput" placeholder="Type your message..." />
+      <button id="chatbotSend">Send</button>
+    </div>
+  </div>
+  <section class="payment-methods">
+    <h2>We Accept</h2>
+    <div class="payment-icons">
+      <img src="img/visa.png" alt="Visa">
+      <img src="img/mastercard.png" alt="MasterCard">
+      <img src="img/amex.png" alt="American Express">
+      <img src="img/paypal.png" alt="PayPal">
+    </div>
+  </section>
+  
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h3>About Us</h3>
+        <p>
+          ElectroMart is your one-stop destination for the latest electronic gadgets. We pride ourselves on quality, innovation, and customer satisfaction. Our mission is to provide a seamless shopping experience with a wide range of products and top-notch customer service.
+        </p>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>Email: khetvaswani@gmail.com</li>
+          <li>Phone: 0331-8096987</li>
+           <li>Address: MEHRAN UNIVERSITY</li>
+        </ul>
+      </div>
+      <div class="footer-section credits">
+        <h3>Developers</h3>
+        <ul>
+          <li>Khet Maheshwari</li>
+          <li>Vias Kohli </li>
+          <li>Bilal qazi</li>
+        </ul>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 ElectroMart. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+    
+
+  <script>
+    fetch("http://localhost/final project/api/get_products.php")
+      .then(response => response.json())
+      .then(data => {
+        console.log("Products:", data);
+        // Dynamically show products
+      })
+      .catch(error => console.error("Error:", error));
+    </script>
+
+    
+    <script>
+      const stripe = Stripe("pk_test_XXXXXXXXXXXXXXXXXXXXXXXX"); // your publishable key
+      const elements = stripe.elements();
+      const card = elements.create("card");
+      card.mount("#card-element");
+      
+      document.getElementById("pay-button").addEventListener("click", async function(e) {
+        e.preventDefault();
+      
+        const { paymentMethod, error } = await stripe.createPaymentMethod({
+          type: "card",
+          card: card,
+        });
+      
+        if (error) {
+          document.getElementById("card-errors").textContent = error.message;
+        } else {
+          // Send paymentMethod.id to your PHP server
+          fetch("api/process_payment.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ payment_method_id: paymentMethod.id }),
+          })
+          .then(res => res.json())
+          .then(response => {
+            if (response.success) {
+              alert("Payment successful!");
+              window.location.href = "success.html";
+            } else {
+              alert("Payment failed: " + response.message);
+            }
+          });
+        }
+      });
+      </script>
+      
+</body>
+</html>
